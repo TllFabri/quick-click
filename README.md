@@ -12,3 +12,10 @@
 - **HTML5** for the game structure.
 - **CSS3** for styling and responsiveness.
 - **JavaScript** for logic and interactivity.
+
+---
+
+# Team
+
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/222240928?v=4" width="115"><br><sub>Thiago Fabri</sub>](https://github.com/TllFabri) |
+| :---: |
