@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Rápido</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        #score {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        #gameArea {
+            position: relative;
+            width: 90%;
+            height: 70%;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #clickBtn {
+            position: absolute;
+            padding: 15px 25px;
+            font-size: 1rem;
+            background: #ff4757;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        #clickBtn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Click Rápido</h1>
+    <div id="score">Pontos: 0</div>
+    <div id="gameArea">
+        <button id="clickBtn">Clique!</button>
+    </div>
+
+    <script>
+        const button = document.getElementById('clickBtn');
+        const scoreDisplay = document.getElementById('score');
+        const gameArea = document.getElementById('gameArea');
+
+        let score = 0;
+
+        button.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = `Pontos: ${score}`;
+
+            // Tamanho da área
+            const areaWidth = gameArea.clientWidth;
+            const areaHeight = gameArea.clientHeight;
+
+            // Tamanho do botão
+            const btnWidth = button.offsetWidth;
+            const btnHeight = button.offsetHeight;
+
+            // Posição aleatória dentro da área
+            const randomX = Math.floor(Math.random() * (areaWidth - btnWidth));
+            const randomY = Math.floor(Math.random() * (areaHeight - btnHeight));
+
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        });
+
+        // Posição inicial aleatória
+        window.onload = () => {
+            const areaWidth = gameArea.clientWidth;
+            const areaHeight = gameArea.clientHeight;
+            const btnWidth = button.offsetWidth;
+            const btnHeight = button.offsetHeight;
+            button.style.left = `${Math.floor(Math.random() * (areaWidth - btnWidth))}px`;
+            button.style.top = `${Math.floor(Math.random() * (areaHeight - btnHeight))}px`;
+        };
+    </script>
+</body>
+</html>
